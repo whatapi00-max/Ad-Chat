@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Subtle original background pattern for the chat conversation area. */
+.chat-pattern {
+  background-color: #e8ede9;
+  background-image:
+    radial-gradient(circle at 8px 8px, rgba(7, 94, 84, 0.05) 1.6px, transparent 1.6px),
+    radial-gradient(circle at 28px 28px, rgba(7, 94, 84, 0.04) 1.6px, transparent 1.6px);
+  background-size: 36px 36px;
+}
+
+textarea {
+  font-family: inherit;
+}
