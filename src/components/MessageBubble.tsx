@@ -18,8 +18,8 @@ export function MessageBubble({ message, onSelectOption, onCtaClick }: MessageBu
       <div
         className={`max-w-[82%] rounded-2xl px-4 py-2.5 shadow-sm ${
           isUser
-            ? 'rounded-tr-sm bg-brand text-white'
-            : 'rounded-tl-sm bg-white text-gray-800 ring-1 ring-black/5'
+            ? 'rounded-br-sm bg-brand-bubble text-gray-900'
+            : 'rounded-bl-sm bg-white text-gray-800 shadow-[0_1px_2px_rgba(0,0,0,0.08)]'
         }`}
       >
         {message.text && (
@@ -49,7 +49,7 @@ export function MessageBubble({ message, onSelectOption, onCtaClick }: MessageBu
 
         <div
           className={`mt-1 flex items-center gap-1 text-[11px] ${
-            isUser ? 'justify-end text-white/70' : 'justify-end text-gray-400'
+            isUser ? 'justify-end text-[#8c9ba0]' : 'justify-end text-gray-400'
           }`}
         >
           <span>{message.timestamp}</span>

@@ -18,13 +18,12 @@ body {
   min-height: 100vh;
 }
 
-/* Subtle original background pattern for the chat conversation area. */
+/* WhatsApp original doodle background image. */
 .chat-pattern {
-  background-color: #e8ede9;
-  background-image:
-    radial-gradient(circle at 8px 8px, rgba(7, 94, 84, 0.05) 1.6px, transparent 1.6px),
-    radial-gradient(circle at 28px 28px, rgba(7, 94, 84, 0.04) 1.6px, transparent 1.6px);
-  background-size: 36px 36px;
+  background-color: #e5ddd5;
+  background-image: url('/whatsapp-bg.png');
+  background-size: cover;
+  background-position: center;
 }
 
 textarea {

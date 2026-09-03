@@ -1,4 +1,4 @@
-import { ArrowLeft, MoreVertical } from 'lucide-react'
+import { ArrowLeft, MoreVertical, Phone, Video } from 'lucide-react'
 import { SITE_CONFIG } from '../config/siteConfig'
 import { BillyAvatar } from './BillyAvatar'
 
@@ -31,6 +31,20 @@ export function ChatHeader({ onMenuClick, isTyping = false }: ChatHeaderProps) {
         </p>
       </div>
 
+      <button
+        type="button"
+        aria-label="Voice call"
+        className="rounded-full p-1.5 transition-colors hover:bg-white/10 active:bg-white/20"
+      >
+        <Phone size={20} aria-hidden="true" />
+      </button>
+      <button
+        type="button"
+        aria-label="Video call"
+        className="rounded-full p-1.5 transition-colors hover:bg-white/10 active:bg-white/20"
+      >
+        <Video size={20} aria-hidden="true" />
+      </button>
       <button
         type="button"
         aria-label="Open menu"
