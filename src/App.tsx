@@ -69,8 +69,8 @@ function App() {
   }
 
   return (
-    <div className="flex min-h-screen w-full items-center justify-center bg-gray-100 sm:p-6">
-      <div className="relative flex h-screen w-full max-w-[440px] flex-col overflow-hidden bg-white shadow-2xl sm:h-[850px] sm:rounded-3xl">
+    <div className="flex min-h-svh w-full items-center justify-center bg-gray-100 sm:min-h-screen sm:p-6">
+      <div className="relative flex h-svh w-full max-w-[440px] flex-col overflow-hidden bg-white shadow-2xl sm:h-[850px] sm:rounded-3xl">
         <ChatHeader onMenuClick={() => setMenuOpen((v) => !v)} isTyping={isTyping} />
 
         {menuOpen && (
