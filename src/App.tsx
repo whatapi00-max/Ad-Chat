@@ -47,13 +47,45 @@ function App() {
     else if (step === 'waitingForName') submitName(inputValue)
   }
 
+  const openWhatsApp = (href: string) => {
+    const isAndroid = /Android/i.test(navigator.userAgent)
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent)
+
+    if (isAndroid) {
+      // Use Android intent to open WhatsApp directly
+      const phoneMatch = href.match(/wa\.me\/(\d+)/)
+      if (phoneMatch) {
+        const phone = phoneMatch[1]
+        const text = href.match(/text=([^&]*)/)?.[1] || ''
+        const intentUrl = `intent://send?phone=${phone}${text ? `&text=${text}` : ''}#Intent;scheme=whatsapp;package=com.whatsapp;end`
+        window.location.href = intentUrl
+        return
+      }
+    }
+
+    if (isIOS) {
+      // Use whatsapp:// protocol on iOS
+      const phoneMatch = href.match(/wa\.me\/(\d+)/)
+      if (phoneMatch) {
+        const phone = phoneMatch[1]
+        const text = href.match(/text=([^&]*)/)?.[1] || ''
+        const whatsappAppUrl = `whatsapp://send?phone=${phone}${text ? `&text=${text}` : ''}`
+        window.location.href = whatsappAppUrl
+        return
+      }
+    }
+
+    // Desktop or other platforms - use the web link
+    window.location.href = href
+  }
+
   const handleSelectOption = (id: string) => {
     if (step === 'languageSelection') {
       selectLanguage(id as Language)
     } else if (step === 'platformSelection') {
       selectPlatform(id as Platform, (href) => {
         setTimeout(() => {
-          window.location.href = href
+          openWhatsApp(href)
         }, 2500)
       })
     }
@@ -69,8 +101,8 @@ function App() {
   }
 
   return (
-    <div className="flex min-h-svh w-full items-center justify-center bg-gray-100 sm:min-h-screen sm:p-6">
-      <div className="relative flex h-svh w-full max-w-[440px] flex-col overflow-hidden bg-white shadow-2xl sm:h-[850px] sm:rounded-3xl">
+    <div className="flex min-h-dvh w-full items-center justify-center overflow-x-hidden bg-gray-100 sm:min-h-screen sm:p-6">
+      <div className="relative flex h-dvh w-full max-w-full flex-col overflow-hidden bg-white shadow-2xl sm:h-[850px] sm:max-w-[440px] sm:rounded-3xl">
         <ChatHeader onMenuClick={() => setMenuOpen((v) => !v)} isTyping={isTyping} />
 
         {menuOpen && (

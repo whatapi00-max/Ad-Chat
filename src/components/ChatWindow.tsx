@@ -24,7 +24,8 @@ export function ChatWindow({
 
   return (
     <div
-      className="chat-pattern flex-1 overflow-y-auto px-3 py-4"
+      className="chat-pattern flex-1 w-full min-w-0 overflow-y-auto overflow-x-hidden px-3 py-4"
+      style={{ WebkitOverflowScrolling: 'touch' }}
       role="log"
       aria-live="polite"
       aria-label="Conversation with Customer Support"

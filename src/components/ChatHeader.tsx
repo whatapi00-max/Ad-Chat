@@ -20,10 +20,10 @@ export function ChatHeader({ onMenuClick, isTyping = false }: ChatHeaderProps) {
         <ArrowLeft size={20} aria-hidden="true" />
       </button>
 
-      <BillyAvatar size={38} />
+      <BillyAvatar size={38} className="shrink-0" />
 
       <div className="min-w-0 flex-1">
-        <h1 className="truncate text-[16px] font-semibold leading-tight">
+        <h1 className="truncate text-[15px] font-semibold leading-tight">
           {HEADER_NAME}
         </h1>
         <p className="text-[12px] leading-tight text-white/75">
@@ -34,14 +34,14 @@ export function ChatHeader({ onMenuClick, isTyping = false }: ChatHeaderProps) {
       <button
         type="button"
         aria-label="Voice call"
-        className="rounded-full p-1.5 transition-colors hover:bg-white/10 active:bg-white/20"
+        className="hidden rounded-full p-1.5 transition-colors hover:bg-white/10 active:bg-white/20 sm:block"
       >
         <Phone size={20} aria-hidden="true" />
       </button>
       <button
         type="button"
         aria-label="Video call"
-        className="rounded-full p-1.5 transition-colors hover:bg-white/10 active:bg-white/20"
+        className="hidden rounded-full p-1.5 transition-colors hover:bg-white/10 active:bg-white/20 sm:block"
       >
         <Video size={20} aria-hidden="true" />
       </button>
