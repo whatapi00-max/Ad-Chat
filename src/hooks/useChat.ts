@@ -1,14 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { SITE_CONFIG, isConfigured } from '../config/siteConfig'
 import type {
-  ChatPersistedState,
   ConversationStep,
   Language,
   Message,
   Platform,
 } from '../types/chat'
 
-const STORAGE_KEY = 'customer_support_chat_state'
 const INITIAL_SUGGESTION = 'Hello, I want New ID'
 
 /** Bot copy that depends on the language the user picked. */
@@ -57,26 +55,6 @@ function initialMessages(): Message[] {
   ]
 }
 
-function loadPersisted(): ChatPersistedState | null {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    if (!raw) return null
-    const parsed = JSON.parse(raw) as ChatPersistedState
-    if (!Array.isArray(parsed.messages)) return null
-    return parsed
-  } catch {
-    return null
-  }
-}
-
-function persist(state: ChatPersistedState) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
-  } catch {
-    // ignore storage errors (e.g. private browsing)
-  }
-}
-
 const TYPING_MIN_DELAY = 2000
 const TYPING_MAX_DELAY = 4000
 
@@ -85,21 +63,13 @@ function randomDelay(): number {
 }
 
 export function useChat() {
-  const [persisted] = useState(() => loadPersisted())
-
-  const [messages, setMessages] = useState<Message[]>(
-    () => persisted?.messages ?? initialMessages(),
-  )
-  const [step, setStep] = useState<ConversationStep>(() => persisted?.step ?? 'initial')
-  const [userName, setUserName] = useState<string | undefined>(() => persisted?.userName)
-  const [language, setLanguage] = useState<Language | undefined>(() => persisted?.language)
-  const [showInitialSuggestion, setShowInitialSuggestion] = useState<boolean>(
-    () => persisted?.showInitialSuggestion ?? true,
-  )
+  const [messages, setMessages] = useState<Message[]>(initialMessages)
+  const [step, setStep] = useState<ConversationStep>('initial')
+  const [userName, setUserName] = useState<string | undefined>(undefined)
+  const [language, setLanguage] = useState<Language | undefined>(undefined)
+  const [showInitialSuggestion, setShowInitialSuggestion] = useState<boolean>(true)
   const [isTyping, setIsTyping] = useState(false)
-  const [inputValue, setInputValue] = useState<string>(() =>
-    (persisted?.step ?? 'initial') === 'initial' ? INITIAL_SUGGESTION : '',
-  )
+  const [inputValue, setInputValue] = useState<string>(INITIAL_SUGGESTION)
 
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -108,10 +78,6 @@ export function useChat() {
       if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
   }, [])
-
-  useEffect(() => {
-    persist({ messages, step, userName, language, showInitialSuggestion })
-  }, [messages, step, userName, language, showInitialSuggestion])
 
   const addMessage = useCallback((msg: Omit<Message, 'id' | 'timestamp'>) => {
     setMessages((prev) => [...prev, { ...msg, id: makeId(), timestamp: nowStamp() }])
@@ -250,11 +216,6 @@ export function useChat() {
     setUserName(undefined)
     setLanguage(undefined)
     setShowInitialSuggestion(true)
-    try {
-      localStorage.removeItem(STORAGE_KEY)
-    } catch {
-      // ignore
-    }
   }, [])
 
   return {

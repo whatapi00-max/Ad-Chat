@@ -53,7 +53,7 @@ function App() {
     } else if (step === 'platformSelection') {
       selectPlatform(id as Platform, (href) => {
         setTimeout(() => {
-          window.open(href, '_blank', 'noopener,noreferrer')
+          window.location.href = href
         }, 2500)
       })
     }
