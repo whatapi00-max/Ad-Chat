@@ -5,13 +5,13 @@ export const SITE_CONFIG = {
   tagline: 'Online',
 
   english: {
-    whatsapp: 'https://wa.me/917028781429',
+    whatsapp: 'https://wa.me/917028781429?text=Hello%2C%20I%20want%20New%20ID',
     telegram: 'CHANGE_ME',
     signal: 'CHANGE_ME',
   },
 
   hindi: {
-    whatsapp: 'https://wa.me/917028781429',
+    whatsapp: 'https://wa.me/917028781429?text=Hello%2C%20I%20want%20New%20ID',
     telegram: 'CHANGE_ME',
     signal: 'CHANGE_ME',
   },
