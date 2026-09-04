@@ -5,13 +5,13 @@ export const SITE_CONFIG = {
   tagline: 'Online',
 
   english: {
-    whatsapp: 'https://example.com/whatsapp-en',
+    whatsapp: 'https://wa.me/917028781429',
     telegram: 'https://example.com/telegram-en',
     signal: 'https://example.com/signal-en',
   },
 
   hindi: {
-    whatsapp: 'https://example.com/whatsapp-hi',
+    whatsapp: 'https://wa.me/917028781429',
     telegram: 'https://example.com/telegram-hi',
     signal: 'https://example.com/signal-hi',
   },
