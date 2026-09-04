@@ -6,14 +6,14 @@ export const SITE_CONFIG = {
 
   english: {
     whatsapp: 'https://wa.me/917028781429',
-    telegram: 'https://example.com/telegram-en',
-    signal: 'https://example.com/signal-en',
+    telegram: 'CHANGE_ME',
+    signal: 'CHANGE_ME',
   },
 
   hindi: {
     whatsapp: 'https://wa.me/917028781429',
-    telegram: 'https://example.com/telegram-hi',
-    signal: 'https://example.com/signal-hi',
+    telegram: 'CHANGE_ME',
+    signal: 'CHANGE_ME',
   },
 }
 
