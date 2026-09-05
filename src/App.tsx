@@ -47,35 +47,40 @@ function App() {
     else if (step === 'waitingForName') submitName(inputValue)
   }
 
-  const openWhatsApp = (href: string) => {
+  const openPlatformLink = (href: string) => {
     const isAndroid = /Android/i.test(navigator.userAgent)
     const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent)
+    const isMobile = isAndroid || isIOS
 
-    if (isAndroid) {
-      // Use Android intent to open WhatsApp directly
+    if (isMobile && href.includes('wa.me')) {
+      // WhatsApp
       const phoneMatch = href.match(/wa\.me\/(\d+)/)
       if (phoneMatch) {
         const phone = phoneMatch[1]
         const text = href.match(/text=([^&]*)/)?.[1] || ''
-        const intentUrl = `intent://send?phone=${phone}${text ? `&text=${text}` : ''}#Intent;scheme=whatsapp;package=com.whatsapp;end`
-        window.location.href = intentUrl
-        return
+
+        if (isAndroid) {
+          const intentUrl = `intent://send?phone=${phone}${text ? `&text=${text}` : ''}#Intent;scheme=whatsapp;package=com.whatsapp;end`
+          window.location.href = intentUrl
+          return
+        }
+
+        if (isIOS) {
+          const whatsappAppUrl = `whatsapp://send?phone=${phone}${text ? `&text=${text}` : ''}`
+          window.location.href = whatsappAppUrl
+          return
+        }
       }
     }
 
-    if (isIOS) {
-      // Use whatsapp:// protocol on iOS
-      const phoneMatch = href.match(/wa\.me\/(\d+)/)
-      if (phoneMatch) {
-        const phone = phoneMatch[1]
-        const text = href.match(/text=([^&]*)/)?.[1] || ''
-        const whatsappAppUrl = `whatsapp://send?phone=${phone}${text ? `&text=${text}` : ''}`
-        window.location.href = whatsappAppUrl
-        return
-      }
+    if (isMobile && href.includes('signal.me')) {
+      // Signal - replace https with sgnl to open app directly
+      const sgnlUrl = href.replace(/^https:/, 'sgnl:')
+      window.location.href = sgnlUrl
+      return
     }
 
-    // Desktop or other platforms - use the web link
+    // Desktop or non-WhatsApp/Signal link
     window.location.href = href
   }
 
@@ -85,7 +90,7 @@ function App() {
     } else if (step === 'platformSelection') {
       selectPlatform(id as Platform, (href) => {
         setTimeout(() => {
-          openWhatsApp(href)
+          openPlatformLink(href)
         }, 2500)
       })
     }

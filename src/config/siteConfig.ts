@@ -7,13 +7,13 @@ export const SITE_CONFIG = {
   english: {
     whatsapp: 'https://wa.me/917028781429?text=Hello%2C%20I%20want%20New%20ID',
     telegram: 'CHANGE_ME',
-    signal: 'https://signal.me/#u/neelam.17',
+    signal: 'https://signal.me/#eu/4oXK3J01Pw4-HkI5cFjMWr7CeT5VyxuuXBFiDwGskl3AWrITF91CnK45DoRSM4Zu',
   },
 
   hindi: {
     whatsapp: 'https://wa.me/917028781429?text=Hello%2C%20I%20want%20New%20ID',
     telegram: 'CHANGE_ME',
-    signal: 'https://signal.me/#u/neelam.17',
+    signal: 'https://signal.me/#eu/4oXK3J01Pw4-HkI5cFjMWr7CeT5VyxuuXBFiDwGskl3AWrITF91CnK45DoRSM4Zu',
   },
 }
 
