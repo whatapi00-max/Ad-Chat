@@ -80,7 +80,26 @@ function App() {
       return
     }
 
-    // Desktop or non-WhatsApp/Signal link
+    if (isMobile && href.includes('t.me/')) {
+      // Telegram
+      const usernameMatch = href.match(/t\.me\/([^/]+)/)
+      if (usernameMatch) {
+        const username = usernameMatch[1]
+
+        if (isAndroid) {
+          const intentUrl = `intent://resolve?domain=${username}#Intent;scheme=tg;package=org.telegram.messenger;end`
+          window.location.href = intentUrl
+          return
+        }
+
+        if (isIOS) {
+          window.location.href = `tg://resolve?domain=${username}`
+          return
+        }
+      }
+    }
+
+    // Desktop or other platforms - use the web link
     window.location.href = href
   }
 
