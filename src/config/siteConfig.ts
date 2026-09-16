@@ -5,13 +5,13 @@ export const SITE_CONFIG = {
   tagline: 'Online',
 
   english: {
-    whatsapp: 'https://wa.me/917028781429?text=Hello%2C%20I%20want%20New%20ID',
+    whatsapp: 'https://wa.me/447868236008?text=Hello%2C%20I%20want%20New%20ID',
     telegram: 'https://t.me/Billy247id',
     signal: 'https://signal.me/#eu/EfJANMbrMg_2fwc9iYzEE0-SynPDKn1FB13L1YQJPMtzPqHL_a5JELNK6OCTep2X',
   },
 
   hindi: {
-    whatsapp: 'https://wa.me/917028781429?text=Hello%2C%20I%20want%20New%20ID',
+    whatsapp: 'https://wa.me/447868236008?text=Hello%2C%20I%20want%20New%20ID',
     telegram: 'https://t.me/Billy247id',
     signal: 'https://signal.me/#eu/EfJANMbrMg_2fwc9iYzEE0-SynPDKn1FB13L1YQJPMtzPqHL_a5JELNK6OCTep2X',
   },
