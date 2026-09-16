@@ -7,13 +7,13 @@ export const SITE_CONFIG = {
   english: {
     whatsapp: 'https://wa.me/917028781429?text=Hello%2C%20I%20want%20New%20ID',
     telegram: 'https://t.me/cuscare2026',
-    signal: 'https://signal.me/#eu/4oXK3J01Pw4-HkI5cFjMWr7CeT5VyxuuXBFiDwGskl3AWrITF91CnK45DoRSM4Zu',
+    signal: 'https://signal.me/#eu/EfJANMbrMg_2fwc9iYzEE0-SynPDKn1FB13L1YQJPMtzPqHL_a5JELNK6OCTep2X',
   },
 
   hindi: {
     whatsapp: 'https://wa.me/917028781429?text=Hello%2C%20I%20want%20New%20ID',
     telegram: 'https://t.me/cuscare2026',
-    signal: 'https://signal.me/#eu/4oXK3J01Pw4-HkI5cFjMWr7CeT5VyxuuXBFiDwGskl3AWrITF91CnK45DoRSM4Zu',
+    signal: 'https://signal.me/#eu/EfJANMbrMg_2fwc9iYzEE0-SynPDKn1FB13L1YQJPMtzPqHL_a5JELNK6OCTep2X',
   },
 }
 
