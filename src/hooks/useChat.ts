@@ -20,14 +20,16 @@ const TRANSLATIONS: Record<
   }
 > = {
   english: {
-    namePrompt: 'Please share the ID name you want.',
+    namePrompt:
+      'We provide 3% deposit bonus on every deposit to all customer.\nWe have auto deposit and withdrawal service and 24x7 ☎️ customer support . Try our service for best experience\n\nPlease share your name for the 🆔',
     nameConfirmation: (name) =>
       `Great choice, ${name}! 🎉\n\nPlease choose the platform you have:`,
     unavailable: 'Sorry, this option is currently unavailable.',
     redirecting: (platform) => `Thanks, Redirecting to ${platform}...`,
   },
   hindi: {
-    namePrompt: 'aap kis naam se ID chahte hain?',
+    namePrompt:
+      'Hum har customer ko har deposit par *3% deposit bonus* dete hain. 🎁\n\nHamare paas *auto deposit aur withdrawal service* available hai, saath hi *24x7 ☎️ customer support* bhi milta hai.\n\nBest experience ke liye hamari service ko zaroor try karein. 😊\n\n🆔 ID banane ke liye please apna *naam share karein*.',
     nameConfirmation: (name) =>
       `bahut badhiya, ${name}! 🎉\n\nkripya wah platform chunein jo aapke paas hai:`,
     unavailable: 'maaf karein, yeh vikalp abhi uplabdh nahi hai.',

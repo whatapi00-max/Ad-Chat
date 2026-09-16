@@ -1,6 +1,18 @@
+import { Fragment } from 'react'
 import { Check, ExternalLink } from 'lucide-react'
 import type { Message } from '../types/chat'
 import { PlatformOptions } from './PlatformOptions'
+
+/** Renders WhatsApp-style *bold* segments inside a plain-text message. */
+function renderFormattedText(text: string) {
+  return text.split(/(\*[^*\n]+\*)/g).map((part, i) =>
+    part.length > 2 && part.startsWith('*') && part.endsWith('*') ? (
+      <strong key={i}>{part.slice(1, -1)}</strong>
+    ) : (
+      <Fragment key={i}>{part}</Fragment>
+    ),
+  )
+}
 
 interface MessageBubbleProps {
   message: Message
@@ -24,7 +36,7 @@ export function MessageBubble({ message, onSelectOption, onCtaClick }: MessageBu
       >
         {message.text && (
           <p className="whitespace-pre-line break-words text-[15px] leading-snug">
-            {message.text}
+            {renderFormattedText(message.text)}
           </p>
         )}
 
